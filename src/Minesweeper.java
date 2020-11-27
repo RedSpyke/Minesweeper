@@ -15,6 +15,14 @@ public class Minesweeper {
 
         char [][] matrix = new char[m][n]; // generate the board game
 
+        // print the matrix
+        for (int i = 0; i <  m; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix [i][j] = '_';
+                System.out.print(matrix[i][j]+ " ");
+            }
+            System.out.println();
+        }
 
 
 
@@ -40,6 +48,11 @@ public class Minesweeper {
         }
 
         System.out.println(mines);
+        // matrix sides
+        int iMin = 0;
+        int iMax = m - 1;
+        int jMin = 0;
+        int jMax = n - 1;
 
         // count the mines
         for (int i = 0; i <  m; i++) {
@@ -50,36 +63,111 @@ public class Minesweeper {
                     //  neighboring cells
 
 
-                    if(matrix[i-1][j-1] == '*'){
-                        mineCount++;
-                    }
+                    if (i == 0){
+                        if(j != jMax){
+                            if(matrix[i][j+1] == '*'){
+                                mineCount++;
+                            }
+                            if(matrix[i+1][j+1] == '*'){
+                                mineCount++;
+                            }
+                        }
 
-                    if(matrix[i-1][j] == '*'){
-                        mineCount++;
-                    }
-                    if(matrix[i-1][j+1] == '*'){
-                        mineCount++;
-                    }
-                    if(matrix[i][j+1] == '*'){
-                        mineCount++;
-                    }
-                    if(matrix[i+1][j+1] == '*'){
-                        mineCount++;
-                    }
-                    if(matrix[i+1][j] == '*'){
-                        mineCount++;
-                    }
-                    if(matrix[i+1][j-1] == '*'){
-                        mineCount++;
-                    }
-                    if(matrix[i][j-1] == '*'){
-                        mineCount++;
-                    }
+                        if(matrix[i+1][j] == '*'){
+                            mineCount++;
+                        }
+                        if(j != 0){
+                            if(matrix[i+1][j-1] == '*'){
+                                mineCount++;
+                            }
+                            if(matrix[i][j-1] == '*'){
+                                mineCount++;
+                            }
+                        }
 
 
+                    } else if(i == m -1){
+                        if(j != 0){
+                            if(matrix[i-1][j-1] == '*'){
+                                mineCount++;
+                            }
+                            if(matrix[i][j-1] == '*'){
+                                mineCount++;
+                            }
+                        }
+                        
 
+                        if(matrix[i-1][j] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i-1][j+1] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i][j+1] == '*'){
+                            mineCount++;
+                        }
 
+                    } else if (j == 0){
+                        if(matrix[i-1][j] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i-1][j+1] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i][j+1] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i+1][j+1] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i+1][j] == '*'){
+                            mineCount++;
+                        }
+                    } else if(j == n -1){
+                        if(matrix[i-1][j-1] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i-1][j] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i+1][j] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i+1][j-1] == '*'){
+                            mineCount++;
+                        }
+                        if(matrix[i][j-1] == '*'){
+                            mineCount++;
+                        }
+                        else {
+//                            if(matrix[i-1][j-1] == '*'){
+//                                mineCount++;
+//                            }
+//                            if(matrix[i-1][j] == '*'){
+//                                mineCount++;
+//                            }
+//                            if(matrix[i-1][j+1] == '*'){
+//                                mineCount++;
+//                            }
+//                            if(matrix[i][j+1] == '*'){
+//                                mineCount++;
+//                            }
+//                            if(matrix[i+1][j+1] == '*'){
+//                                mineCount++;
+//                            }
+//                            if(matrix[i+1][j] == '*'){
+//                                mineCount++;
+//                            }
+//                            if(matrix[i+1][j-1] == '*'){
+//                                mineCount++;
+//                            }
+//                            if(matrix[i][j-1] == '*'){
+//                                mineCount++;
+//                            }
+                        }
+                    }
 
+                    matrix[i][j] = (char) (mineCount + '0');
                 }
             }
         }
@@ -89,9 +177,6 @@ public class Minesweeper {
         // print the matrix
         for (int i = 0; i <  m; i++) {
             for (int j = 0; j < n; j++) {
-                if(matrix[i][j] != '*'){
-                    matrix[i][j] = '_';
-                }
                 System.out.print(matrix[i][j]+ " ");
             }
             System.out.println();
