@@ -95,17 +95,18 @@ public class Minesweeper {
                                 mineCount++;
                             }
                         }
-                        
-
                         if(matrix[i-1][j] == '*'){
                             mineCount++;
                         }
-                        if(matrix[i-1][j+1] == '*'){
-                            mineCount++;
+                        if( j != jMax){
+                            if(matrix[i-1][j+1] == '*'){
+                                mineCount++;
+                            }
+                            if(matrix[i][j+1] == '*'){
+                                mineCount++;
+                            }
                         }
-                        if(matrix[i][j+1] == '*'){
-                            mineCount++;
-                        }
+
 
                     } else if (j == 0){
                         if(matrix[i-1][j] == '*'){
